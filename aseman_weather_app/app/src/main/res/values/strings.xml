@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">آسمان</string>
+    <string name="tagline">آب‌وهوا رو ساده ببین</string>
+    
+    <!-- Navigation -->
+    <string name="nav_today">امروز</string>
+    <string name="nav_cities">شهرها</string>
+    <string name="nav_settings">تنظیمات</string>
+    
+    <!-- Weather Conditions -->
+    <string name="weather_sunny">آفتابی</string>
+    <string name="weather_cloudy">ابری</string>
+    <string name="weather_partly_cloudy">نیمه‌ابری</string>
+    <string name="weather_rainy">بارانی</string>
+    <string name="weather_stormy">طوفانی</string>
+    <string name="weather_snowy">برفی</string>
+    <string name="weather_foggy">مه‌آلود</string>
+    <string name="weather_clear">صاف</string>
+    
+    <!-- Smart Tips -->
+    <string name="smart_tip_title">نکته هوشمند</string>
+    <string name="smart_tip_sunscreen">ضد آفتاب فراموش نشه!</string>
+    <string name="smart_tip_umbrella">چتر یادت نره!</string>
+    <string name="smart_tip_jacket">یک ژاکت سبک همراه داشته باش.</string>
+    <string name="smart_tip_hydration">آب زیاد بنوش!</string>
+    
+    <!-- Metrics -->
+    <string name="metric_humidity">رطوبت</string>
+    <string name="metric_wind">باد</string>
+    <string name="metric_uv">شاخص UV</string>
+    <string name="metric_visibility">دید</string>
+    <string name="metric_pressure">فشار</string>
+    <string name="metric_feels_like">احساس مثل</string>
+    <string name="metric_dew_point">نقطه شبنم</string>
+    
+    <!-- Units -->
+    <string name="unit_celsius">°C</string>
+    <string name="unit_km_h">کیلومتر/ساعت</string>
+    <string name="unit_percent">٪</string>
+    <string name="unit_hpa">hPa</string>
+    <string name="unit_km">کیلومتر</string>
+    
+    <!-- Common -->
+    <string name="loading">در حال بارگذاری...</string>
+    <string name="error_network">خطا در اتصال به اینترنت</string>
+    <string name="error_location">دسترسی به مکان فعال نیست</string>
+    <string name="retry">تلاش مجدد</string>
+    <string name="settings">تنظیمات</string>
+    <string name="about">درباره برنامه</string>
+</resources>

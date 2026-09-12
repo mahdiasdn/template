@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Peyda:wght@100..900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    @layer base {
+      html, body { width: 100vw; margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#FFFCF6",
+            "surface-cream": "#FFFCF6",
+            "surface-card": "#FFFFFF",
+            "on-surface": "#1E2A3A",
+            primary: "#3389FF",
+            "primary-container": "#4294FF",
+            secondary: "#4A6B94",
+            tertiary: "#FF753E",
+            "tertiary-fixed": "#FFE5D9",
+            "sun-glow": "#FFB800",
+            "sky-tint-bg": "#EBF3FF",
+            "glass-border": "rgba(255, 255, 255, 0.45)",
+            "shadow-tint": "rgba(51, 137, 255, 0.16)",
+            error: "#E5484D",
+            outline: "#717785",
+            "outline-variant": "#C1C6D6",
+            "surface-container": "#F0EEE8",
+            "surface-container-low": "#F6F3ED",
+            "surface-container-high": "#EBE8E2",
+          },
+          borderRadius: {
+            sm: "12px",
+            md: "20px",
+            lg: "28px",
+            xl: "1rem",
+            full: "9999px",
+          },
+          spacing: {
+            "space-2xs": "4px",
+            "space-xs": "8px",
+            "space-sm": "12px",
+            "space-md": "16px",
+            "space-lg": "20px",
+            "space-xl": "24px",
+            "space-2xl": "32px",
+            "space-3xl": "48px",
+            "screen-margin": "16px",
+            "card-gap": "16px",
+          },
+          fontFamily: {
+            "temp-hero": ["Peyda"],
+            h1: ["Peyda"],
+            h2: ["Peyda"],
+            h3: ["Peyda"],
+            "body-lg": ["Peyda"],
+            "body-md": ["Peyda"],
+            "body-sm": ["Peyda"],
+            "label-md": ["Peyda"],
+            "label-sm": ["Peyda"],
+            "stat-value": ["Peyda"],
+          },
+          fontSize: {
+            "temp-hero": ["64px", { lineHeight: "1.0", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "temp-hero-mobile": ["56px", { lineHeight: "1.0", letterSpacing: "-0.02em", fontWeight: "700" }],
+            h1: ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+            h2: ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+            h3: ["20px", { lineHeight: "1.35", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+            "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+            "label-md": ["13px", { lineHeight: "1.3", fontWeight: "500" }],
+            "label-sm": ["11px", { lineHeight: "1.2", fontWeight: "500" }],
+            "stat-value": ["22px", { lineHeight: "1.1", fontWeight: "600" }],
+          },
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+
+<body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col selection:bg-primary/20 selection:text-on-surface">
+  
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+    <div class="h-16 px-screen-margin flex items-center justify-between" dir="rtl">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary to-primary-container p-0.5 shadow-sm">
+          <div class="w-full h-full rounded-[14px] bg-white flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[22px]">cloud</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-h3 text-[19px] font-bold text-on-surface">آسمان</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary">نسخه زنده</span>
+          </div>
+          <span class="font-label-sm text-label-sm text-outline">پنج‌شنبه، ۵ خرداد ۱۴۰۳</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="relative w-10 h-10 flex items-center justify-center rounded-2xl bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors focus:outline-none">
+          <span class="material-symbols-outlined text-[20px]">notifications</span>
+          <span class="absolute top-2 left-2 w-2 h-2 rounded-full bg-tertiary ring-2 ring-surface"></span>
+        </button>
+        <div class="w-10 h-10 rounded-2xl bg-surface-container-low p-1 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-400 to-orange-400 flex items-center justify-center text-white font-bold text-xs shadow-sm">
+            س‌ع
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 w-full bg-surface px-screen-margin pt-16 pb-28">
+    <div class="flex flex-col w-full pb-6 space-y-space-xl text-on-surface" dir="rtl">
+      
+      <!-- LAYER 1: HERO SKY WEATHER CARD -->
+      <section class="relative w-full">
+        <div class="relative overflow-hidden rounded-3xl p-6 bg-gradient-to-b from-primary-container to-primary text-on-primary shadow-[0_16px_36px_-8px_rgba(51,137,255,0.32),0_4px_12px_-2px_rgba(51,137,255,0.15)] flex flex-col justify-between">
+          <div class="flex items-start justify-between z-10">
+            <div>
+              <button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-on-primary hover:bg-white/30 transition-colors focus:outline-none shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                <span class="font-h3 text-h3 font-bold tracking-tight">تهران</span>
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+              </button>
+              <p class="font-label-sm text-label-sm text-white/85 mt-1.5 mr-1 font-medium">ایستگاه مرکزی مهرآباد • ۱۲:۳۰</p>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-white/95 border border-white/20 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-sun-glow animate-pulse"></span>
+              <span class="font-label-sm text-label-sm font-semibold">نیمه‌ابری و مطبوع</span>
+            </div>
+          </div>
+          
+          <div class="relative flex items-center justify-between my-4 z-10">
+            <div class="relative w-36 h-36 flex-shrink-0 flex items-center justify-center">
+              <svg class="w-full h-full drop-shadow-[0_18px_24px_rgba(0,30,80,0.28)]" viewBox="0 0 140 140">
+                <defs>
+                  <linearGradient id="sunGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFB800;stop-opacity:1" />
+                  </linearGradient>
+                  <linearGradient id="cloudGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(255,255,255,0.95);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(255,255,255,0.75);stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <!-- Sun -->
+                <circle cx="90" cy="50" r="28" fill="url(#sunGlow)" opacity="0.95"/>
+                <circle cx="90" cy="50" r="38" fill="url(#sunGlow)" opacity="0.25"/>
+                <!-- Cloud (frosted glass effect) -->
+                <g opacity="0.92">
+                  <ellipse cx="55" cy="75" rx="32" ry="22" fill="url(#cloudGlass)"/>
+                  <ellipse cx="75" cy="70" rx="26" ry="20" fill="url(#cloudGlass)"/>
+                  <ellipse cx="50" cy="80" rx="20" ry="14" fill="url(#cloudGlass)"/>
+                </g>
+              </svg>
+            </div>
+            
+            <div class="flex flex-col items-end">
+              <span class="font-temp-hero-mobile text-temp-hero-mobile">۳۲°</span>
+              <span class="font-body-lg text-body-lg text-white/90 mt-1">آفتابی</span>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="font-label-md text-label-md text-white/85">بیشینه: ۳۴°</span>
+                <span class="font-label-md text-label-md text-white/85">کمینه: ۲۲°</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bottom Metrics Rail -->
+          <div class="flex items-center justify-between mt-4 pt-4 border-t border-white/20">
+            <div class="flex flex-col items-center">
+              <span class="material-symbols-outlined text-white/90 text-[20px]">air</span>
+              <span class="font-label-sm text-label-sm text-white/85 mt-0.5">باد</span>
+              <span class="font-stat-value text-stat-value text-white mt-0.5">۱۸</span>
+              <span class="font-label-sm text-label-sm text-white/70 text-[10px]">km/h</span>
+            </div>
+            <div class="w-px h-10 bg-white/20"></div>
+            <div class="flex flex-col items-center">
+              <span class="material-symbols-outlined text-white/90 text-[20px]">water_drop</span>
+              <span class="font-label-sm text-label-sm text-white/85 mt-0.5">رطوبت</span>
+              <span class="font-stat-value text-stat-value text-white mt-0.5">۴۸٪</span>
+              <span class="font-label-sm text-label-sm text-white/70 text-[10px]">نسبی</span>
+            </div>
+            <div class="w-px h-10 bg-white/20"></div>
+            <div class="flex flex-col items-center">
+              <span class="material-symbols-outlined text-white/90 text-[20px]">wb_sunny</span>
+              <span class="font-label-sm text-label-sm text-white/85 mt-0.5">UV</span>
+              <span class="font-stat-value text-stat-value text-white mt-0.5">۴</span>
+              <span class="font-label-sm text-label-sm text-white/70 text-[10px]">متوسط</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYER 2: SMART TIP BANNER -->
+      <section class="w-full">
+        <div class="relative overflow-hidden rounded-2xl bg-tertiary-fixed/30 p-3.5 flex items-center justify-between shadow-sm">
+          <div class="absolute top-0 right-0 bottom-0 w-1.5 bg-tertiary"></div>
+          <div class="flex items-center gap-3 pr-2">
+            <div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-tertiary text-[22px]" style="font-variation-settings: 'FILL' 1;">umbrella</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-label-md text-label-md font-bold text-tertiary">توصیه امروز</span>
+              <p class="font-body-sm text-body-sm text-on-surface truncate">امروز چتر همراهت باشه — احتمال بارش پراکنده از عصر</p>
+            </div>
+          </div>
+          <button class="w-7 h-7 rounded-full flex items-center justify-center text-outline hover:text-on-surface flex-shrink-0 focus:outline-none">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- LAYER 3: QUICK STATS BENTO GRID -->
+      <section class="w-full space-y-space-sm">
+        <div class="flex items-center justify-between px-1">
+          <h2 class="font-h3 text-h3 text-on-surface font-bold">شاخص‌های هواشناسی</h2>
+          <span class="font-label-sm text-label-sm text-secondary font-medium">به‌روزرسانی: ۱۴:۳۰</span>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-space-sm">
+          <!-- UV Index -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">شاخص UV</span>
+              <div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-sun-glow text-[18px]" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-1">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۴</span>
+                <span class="font-body-sm text-body-sm text-outline">از ۱۰</span>
+              </div>
+              <div class="mt-2 w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+                <div class="w-4/10 h-full bg-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-sm text-label-sm text-outline mt-1.5 block">متوسط — نیاز به کرم ضدآفتاب</span>
+            </div>
+          </div>
+
+          <!-- Air Quality -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">کیفیت هوا (AQI)</span>
+              <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
+                <span class="material-symbols-outlined text-emerald-600 text-[18px]">air</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-center gap-2">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۶۴</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-semibold">سالم</span>
+              </div>
+              <div class="mt-2 w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+                <div class="w-1/3 h-full bg-emerald-500 rounded-full"></div>
+              </div>
+              <span class="font-label-sm text-label-sm text-outline mt-1.5 block">هوای قابل قبول برای عموم</span>
+            </div>
+          </div>
+
+          <!-- Humidity -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">رطوبت نسبی</span>
+              <div class="w-8 h-8 rounded-full bg-sky-tint-bg flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-[18px]">water_drop</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-1">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۴۸٪</span>
+                <span class="font-label-sm text-label-sm text-secondary font-medium">(مطلوب)</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-outline mt-1.5 block">نقطه شبنم: ۱۴°</span>
+            </div>
+          </div>
+
+          <!-- Wind -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">باد</span>
+              <div class="w-8 h-8 rounded-full bg-sky-tint-bg flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-[18px]">navigation</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-1">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۱۸</span>
+                <span class="font-label-sm text-label-sm text-outline">km/h</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-outline mt-1.5 block">وزش ملایم · شمال‌شرقی</span>
+            </div>
+          </div>
+
+          <!-- Pressure -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">فشار اتمسفر</span>
+              <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-secondary text-[18px]">speed</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-1">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۱۰۱۳</span>
+                <span class="font-label-sm text-label-sm text-outline">hPa</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-outline mt-1.5 block">فشار پایدار و نرمال</span>
+            </div>
+          </div>
+
+          <!-- Visibility -->
+          <div class="bg-surface-card rounded-2xl p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between">
+              <span class="font-label-md text-label-md text-secondary">دید افقی</span>
+              <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-secondary text-[18px]">visibility</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="flex items-baseline gap-1">
+                <span class="font-stat-value text-stat-value text-on-surface font-bold">۱۰</span>
+                <span class="font-label-sm text-label-sm text-outline">کیلومتر</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-emerald-700 mt-1.5 block">دید کاملاً شفاف</span>
+            </div>
+          </div>
+
+          <!-- Sunrise/Sunset -->
+          <div class="col-span-2 bg-surface-card rounded-2xl p-4 shadow-[0_4px_16px_rgba(30,42,58,0.04)]">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-label-md text-label-md text-secondary font-medium">ساعات خورشیدی و روشنایی</span>
+              <span class="font-label-sm text-label-sm text-outline">طول روز: ۱۳ ساعت و ۳۶ دقیقه</span>
+            </div>
+            <div class="relative py-2">
+              <svg class="w-full h-14 text-outline-variant" fill="none" viewBox="0 0 320 60">
+                <path d="M 20,50 Q 160,5 300,50" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></path>
+                <circle class="fill-sun-glow stroke-white" cx="210" cy="20" r="7" stroke-width="2.5"></circle>
+              </svg>
+              <div class="flex items-center justify-between pt-1">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-amber-100/60 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-amber-600 text-[16px]">wb_twilight</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="font-label-sm text-label-sm text-outline">طلوع خورشید</span>
+                    <span class="font-body-md text-body-md font-bold text-on-surface">۰۵:۴۲</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="flex flex-col items-end">
+                    <span class="font-label-sm text-label-sm text-outline">غروب خورشید</span>
+                    <span class="font-body-md text-body-md font-bold text-on-surface">۱۹:۱۸</span>
+                  </div>
+                  <div class="w-7 h-7 rounded-full bg-orange-100/60 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-orange-600 text-[16px]">nightlight</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYER 4: HOURLY FORECAST -->
+      <section class="w-full space-y-space-sm">
+        <div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-2">
+            <h2 class="font-h3 text-h3 text-on-surface font-bold">پیش‌بینی ۲۴ ساعته</h2>
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          </div>
+          <button class="font-label-md text-label-md text-primary font-semibold flex items-center gap-0.5 hover:underline">
+            <span>نمودار ساعتی</span>
+            <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+          </button>
+        </div>
+        
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-screen-margin px-screen-margin scroll-smooth">
+          <!-- Now -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-primary text-on-primary flex flex-col items-center justify-between shadow-[0_8px_20px_-4px_rgba(0,90,183,0.35)]">
+            <span class="font-label-md text-label-md font-bold text-white">الان</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[28px] text-sun-glow" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-white">۲۶°</span>
+            <span class="font-label-sm text-label-sm text-white/80 mt-0.5">آفتابی</span>
+          </div>
+          
+          <!-- 15:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۱۵:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-sun-glow" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۷°</span>
+            <span class="font-label-sm text-label-sm text-secondary">صاف</span>
+          </div>
+          
+          <!-- 16:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۱۶:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-primary" style="font-variation-settings: 'FILL' 1;">rainy</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۵°</span>
+            <span class="font-label-sm text-label-sm text-primary font-semibold">بارانی</span>
+          </div>
+          
+          <!-- 17:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۱۷:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-primary" style="font-variation-settings: 'FILL' 1;">weather_hail</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۴°</span>
+            <span class="font-label-sm text-label-sm text-primary">رگبار</span>
+          </div>
+          
+          <!-- 18:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۱۸:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-secondary">cloud</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۲°</span>
+            <span class="font-label-sm text-label-sm text-secondary">ابری</span>
+          </div>
+          
+          <!-- 19:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۱۹:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-orange-400">wb_twilight</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۱°</span>
+            <span class="font-label-sm text-label-sm text-secondary">غروب</span>
+          </div>
+          
+          <!-- 20:00 -->
+          <div class="flex-shrink-0 w-20 py-3.5 px-2 rounded-2xl bg-surface-card text-on-surface flex flex-col items-center justify-between shadow-sm hover:bg-surface-container-low transition-colors">
+            <span class="font-label-md text-label-md text-outline">۲۰:۰۰</span>
+            <div class="w-10 h-10 my-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[26px] text-secondary-container">bedtime</span>
+            </div>
+            <span class="font-h3 text-h3 font-bold text-on-surface">۲۰°</span>
+            <span class="font-label-sm text-label-sm text-secondary">مهتابی</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYER 5: DAILY FORECAST -->
+      <section class="w-full space-y-space-sm">
+        <div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-2">
+            <h2 class="font-h3 text-h3 text-on-surface font-bold">پیش‌بینی ۱۴ روزه</h2>
+            <span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">دو هفته آینده</span>
+          </div>
+          <button class="font-label-md text-label-md text-secondary hover:text-primary">مشاهده تقویم</button>
+        </div>
+        
+        <div class="bg-surface-card rounded-3xl p-3 shadow-[0_4px_16px_rgba(30,42,58,0.04)] space-y-1">
+          <!-- Today -->
+          <div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low/60 hover:bg-surface-container transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-bold text-on-surface">امروز</span>
+              <span class="font-label-sm text-label-sm text-primary">رگبار پراکنده</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings: 'FILL' 1;">rainy</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۱۹°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[20%] left-[10%] top-0 bottom-0 bg-gradient-to-l from-primary-container to-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۸°</span>
+            </div>
+          </div>
+          
+          <!-- Tomorrow -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">فردا (جمعه)</span>
+              <span class="font-label-sm text-label-sm text-outline">آفتابی و گرم</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-sun-glow" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۲۱°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[30%] left-[5%] top-0 bottom-0 bg-gradient-to-l from-primary to-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۳۰°</span>
+            </div>
+          </div>
+          
+          <!-- Day 3 -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">شنبه</span>
+              <span class="font-label-sm text-label-sm text-outline">نیمه‌ابری</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-secondary">partly_cloudy_day</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۲۰°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[25%] left-[15%] top-0 bottom-0 bg-gradient-to-l from-primary to-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۹°</span>
+            </div>
+          </div>
+          
+          <!-- Day 4 -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">یک‌شنبه</span>
+              <span class="font-label-sm text-label-sm text-outline">رگبار بهاری</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-primary">thunderstorm</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۱۸°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[15%] left-[25%] top-0 bottom-0 bg-gradient-to-l from-primary-container to-secondary rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۶°</span>
+            </div>
+          </div>
+          
+          <!-- Day 5 -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">دوشنبه</span>
+              <span class="font-label-sm text-label-sm text-outline">صاف و مطبوع</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-sun-glow" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۱۹°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[20%] left-[10%] top-0 bottom-0 bg-gradient-to-l from-primary to-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۸°</span>
+            </div>
+          </div>
+          
+          <!-- Day 6 -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">سه‌شنبه</span>
+              <span class="font-label-sm text-label-sm text-outline">وزش باد شدید</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-secondary">air</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۱۷°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[10%] left-[30%] top-0 bottom-0 bg-gradient-to-l from-secondary to-sun-glow rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۵°</span>
+            </div>
+          </div>
+          
+          <!-- Day 7 -->
+          <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container-low transition-colors">
+            <div class="w-24 flex flex-col">
+              <span class="font-body-md text-body-md font-semibold text-on-surface">چهارشنبه</span>
+              <span class="font-label-sm text-label-sm text-outline">باران ملایم</span>
+            </div>
+            <div class="w-8 h-8 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px] text-primary">rainy</span>
+            </div>
+            <div class="flex items-center gap-2 flex-1 max-w-[150px] mr-2">
+              <span class="font-label-md text-label-md text-outline w-6 text-left">۱۶°</span>
+              <div class="flex-1 h-2 bg-surface-variant rounded-full relative overflow-hidden">
+                <div class="absolute right-[5%] left-[35%] top-0 bottom-0 bg-gradient-to-l from-primary to-secondary-fixed-dim rounded-full"></div>
+              </div>
+              <span class="font-label-md text-label-md font-bold text-on-surface w-6 text-right">۲۳°</span>
+            </div>
+          </div>
+        </div>
+        
+        <button class="w-full py-3 rounded-full bg-surface-container-high/60 text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center justify-center gap-1.5 focus:outline-none">
+          <span>نمایش پیش‌بینی ۷ روز بعد</span>
+          <span class="material-symbols-outlined text-[18px]">expand_more</span>
+        </button>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Floating Navigation Dock -->
+  <nav class="fixed bottom-0 inset-x-0 z-50 pb-safe pointer-events-none flex justify-center" data-active-classes="bg-primary text-on-primary shadow-[0_4px_16px_rgba(0,90,183,0.3)]">
+    <div class="pointer-events-auto mb-space-lg mx-auto w-[calc(100%-32px)] max-w-[380px] h-16 bg-surface-cream/90 backdrop-blur-2xl rounded-full p-1.5 flex items-center justify-between shadow-[0_12px_28px_-6px_rgba(30,42,58,0.1),0_2px_8px_0_rgba(30,42,58,0.04)]">
+      <a aria-current="page" class="flex-1 h-full flex items-center justify-center gap-space-xs rounded-full transition-all duration-200 bg-primary text-on-primary shadow-[0_4px_16px_rgba(0,90,183,0.3)]" data-path="today" href="#">
+        <span class="material-symbols-outlined text-[22px]">wb_sunny</span>
+        <span class="font-label-md text-label-md">امروز</span>
+      </a>
+      <a class="flex-1 h-full flex items-center justify-center gap-space-xs rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="cities" href="#">
+        <span class="material-symbols-outlined text-[22px]">location_on</span>
+        <span class="font-label-md text-label-md">شهرها</span>
+      </a>
+      <a class="flex-1 h-full flex items-center justify-center gap-space-xs rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="settings" href="#">
+        <span class="material-symbols-outlined text-[22px]">tune</span>
+        <span class="font-label-md text-label-md">تنظیمات</span>
+      </a>
+    </div>
+  </nav>
+
+</body>
+</html>
