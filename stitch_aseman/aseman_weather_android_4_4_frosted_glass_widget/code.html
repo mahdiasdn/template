@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="h-full" dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aseman Weather - Android 4×4 Home Screen Widget (ویجت ۴×۴ روز)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Vazirmatn:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', 'Plus Jakarta Sans', 'sans-serif'],
+            display: ['Vazirmatn', 'Plus Jakarta Sans', 'sans-serif'],
+            mono: ['monospace'],
+          },
+          colors: {
+            aseman: {
+              blue: '#3389FF',
+              blueDark: '#1E6BD6',
+              cream: '#FCF9F3',
+              creamDark: '#F4EEE1',
+              orange: '#FF753E',
+              slate: '#4A6B94',
+              text: '#1E2A3A',
+              textMuted: '#64748B',
+            }
+          },
+          boxShadow: {
+            'widget': '0 20px 45px -10px rgba(51, 137, 255, 0.35), 0 10px 20px -8px rgba(30, 42, 58, 0.12)',
+            'pill': '0 4px 12px rgba(0, 0, 0, 0.04)',
+            'inner-top': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.65)',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      font-feature-settings: "ss01", "ss02", "ss03";
+    }
+    .widget-container {
+      width: 320px;
+      height: 320px; /* 250x250 dp scaled optically to standard preview display */
+    }
+    .spec-badge {
+      font-family: 'Plus Jakarta Sans', 'Vazirmatn', monospace;
+    }
+    /* Soft 3D glassy sun-cloud icon */
+    .icon-sun {
+      background: radial-gradient(circle at 35% 30%, #FFF388 0%, #FFA800 50%, #FF6F00 100%);
+      box-shadow: 0 0 25px rgba(255, 168, 0, 0.45);
+    }
+    .icon-cloud-main {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(225, 240, 255, 0.82) 100%);
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -3px 6px rgba(100, 160, 240, 0.25), 0 8px 18px rgba(30, 80, 160, 0.15);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="bg-[#F0F4F9] text-slate-800 min-h-screen flex flex-col items-center justify-start py-10 px-4 select-none">
+<!-- Header & Context Banner -->
+<header class="text-center max-w-2xl mb-8"><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-600 text-xs font-semibold mb-3">
+<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+      سیستم ویجت‌های اندروید «آسمان» • نسخه مات شیشه‌ای
+    </div>
+<h1 class="text-3xl md:text-4xl font-extrabold text-[#1E2A3A] tracking-tight mb-2">
+      ویجت بزرگ ۴×۴ شیشه‌ای (Frosted Glass)
+    </h1>
+<p class="text-sm md:text-base text-slate-500 font-normal leading-relaxed">
+      اندازه ۲۵۰×۲۵۰ دی‌پی • جلوه شفاف شیشه مات با بلور عمیق ۲۸ پیکسل روی پس‌زمینه زنده هوم‌اسکرین
+    </p></header>
+<!-- Stage: Android Launcher Simulation Frame -->
+<main class="w-full max-w-md flex flex-col items-center">
+<!-- Phone / Home Screen Wallpaper Card -->
+<div class="relative w-full rounded-[42px] p-6 shadow-2xl shadow-blue-900/10 flex flex-col items-center overflow-hidden border border-white/60 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1UndAfH6v0MU7OiBenhZ71CHr6j5Ix_Apb4XdiqRjWFCYVw2VwRO_OgTis2ivNKDV8aZVb0C-FpLWaMnfEu9ZRhejRufoPPX5G4gg1njGCb7_ilSdZvOMqoOI6utvMMprLhkCAHTdQjLhUgW1KpRni-zcDmYgUQkIwar06xgN1gWWFXyYYzOszFZ3mTk1lfySOcIJT4S-i5ybQTumSF87CoV8w_kZ4Z6FnDxSHeSLRTjIYbHaEUNubJ-Eg'); min-height: 520px;">
+<!-- Ambient Soft Lighting Overlay for contrast -->
+<div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+<!-- Android Top Status Bar -->
+<div class="w-full flex items-center justify-between text-white drop-shadow text-xs font-semibold px-4 pt-1 pb-6 z-10">
+<div class="flex items-center gap-1.5 font-sans tracking-wide">
+<span>۱۲:۴۵</span>
+</div>
+<div class="flex items-center gap-2 drop-shadow-sm">
+<!-- Signal -->
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.2"></path>
+<path d="M2 17h3v4H2v-4zm5-4h3v8H7v-8zm5-4h3v12h-3V9zm5-5h3v17h-3V4z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.71 0 7.07 1.48 9.54 3.91L12 19.34 2.46 11.41C4.93 8.98 8.29 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery -->
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<rect fill="none" height="12" rx="3" stroke="currentColor" stroke-width="2" width="17" x="2" y="6"></rect>
+<path d="M21 10v4" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<rect fill="currentColor" height="8" rx="1.5" width="11" x="4" y="8"></rect>
+</svg>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- THE 4×4 FROSTED GLASS WIDGET COMPONENT -->
+<!-- ============================================== -->
+<div class="relative z-10 w-[290px] h-[290px] sm:w-[310px] sm:h-[310px] rounded-[32px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:scale-[1.01]" style="backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.18) 100%); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;">
+<!-- Subtle Top Glass Refraction Highlight -->
+<div class="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
+<!-- ================= TOP HALF ================= -->
+<div class="px-5 pt-4 pb-2 flex-1 flex flex-col justify-between text-white">
+<!-- Row 1: Header (City, Time/Status Pill, Menu Dots) -->
+<div class="flex items-center justify-between">
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]">تهران</span>
+<span class="text-[11px] font-medium text-white/95 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30 drop-shadow-sm">امروز، ۱۲:۴۵</span>
+</div>
+<!-- More options / Material You 3 dots -->
+<button class="w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 flex items-center justify-center transition-colors drop-shadow-sm">
+<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="19" cy="12" r="2"></circle>
+<circle cx="5" cy="12" r="2"></circle>
+</svg>
+</button>
+</div>
+<!-- Row 2: Hero Weather Centerpiece (Large 3D Icon + Temperature Stack) -->
+<div class="flex items-center justify-between my-auto py-1">
+<!-- Right / Start (RTL): Large Temperature & Condition -->
+<div class="flex flex-col">
+<div class="flex items-start">
+<span class="text-5xl sm:text-6xl font-black tracking-tighter leading-none text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.25)]">۲۲</span>
+<span class="text-2xl sm:text-3xl font-bold text-white/90 mr-0.5 mt-0.5 drop-shadow">°</span>
+</div>
+<div class="text-xs font-semibold text-white mt-1 flex items-center gap-1.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
+<span>نیمه‌ابری و آرام</span>
+</div>
+<!-- High / Low Temperatures -->
+<div class="flex items-center gap-2 mt-1.5 text-[11px] font-medium text-white bg-black/15 backdrop-blur-md px-2.5 py-0.5 rounded-full w-fit border border-white/20 drop-shadow-sm">
+<span class="flex items-center gap-0.5">
+<span class="text-emerald-300 font-bold drop-shadow-sm">↑</span>
+<span>۲۵°</span>
+</span>
+<span class="opacity-40">|</span>
+<span class="flex items-center gap-0.5">
+<span class="text-orange-200 font-bold drop-shadow-sm">↓</span>
+<span>۱۴°</span>
+</span>
+</div>
+</div>
+<!-- Left / End (RTL): Soft 3D Glassy Weather Icon (Semi-cloudy day) -->
+<div class="relative w-20 h-20 sm:w-22 sm:h-22 flex items-center justify-center pointer-events-none">
+<!-- Ambient Icon Glow -->
+<div class="absolute w-16 h-16 rounded-full bg-amber-300/40 blur-xl -top-1 -right-1"></div>
+<!-- 3D Glowing Sun -->
+<div class="absolute top-1 right-2 w-11 h-11 rounded-full icon-sun border border-amber-200/50">
+<!-- Specular Highlight -->
+<div class="absolute top-1 left-2 w-3.5 h-2 rounded-full bg-white/60 blur-[0.6px] rotate-[-20deg]"></div>
+</div>
+<!-- Soft 3D Volumetric Glass Cloud -->
+<div class="absolute bottom-1 left-0 w-16 h-11 rounded-2xl icon-cloud-main border border-white/80 flex items-center justify-center shadow-lg">
+<!-- Cloud Puffs -->
+<div class="absolute -top-3.5 left-2 w-7 h-7 rounded-full bg-white/95 shadow-sm border border-white/90"></div>
+<div class="absolute -top-2 right-2.5 w-6 h-6 rounded-full bg-white/90 shadow-sm border border-white/80"></div>
+<!-- Gloss Rim Reflection -->
+<div class="absolute inset-x-2 bottom-1 h-[2px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= BOTTOM HALF: HOURLY FORECAST (FROSTED GLASS) ================= -->
+<div class="p-3 pt-2.5 rounded-b-[31px]" style="background: rgba(255, 255, 255, 0.22); border-top: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+<!-- Section micro-header: Now + Next hours label -->
+<div class="flex items-center justify-between text-[10px] font-semibold text-white/90 mb-1.5 px-1 drop-shadow-sm">
+<span class="text-white font-bold">پیش‌بینی ساعتی</span>
+<span class="text-white/80">۴ ساعت آینده</span>
+</div>
+<!-- 4 Hourly Mini Frosted Glass Forecast Cards Grid -->
+<div class="grid grid-cols-4 gap-1.5">
+<!-- Hour 1: Active / Now (Frosted Highlighted Pill) -->
+<div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl shadow-sm" style="background: rgba(255, 255, 255, 0.45); border: 1px solid rgba(255, 255, 255, 0.6);">
+<span class="text-[10px] font-bold text-[#1E2A3A]">الان</span>
+<!-- Mini Icon (Partly Cloudy) -->
+<div class="relative w-5 h-5 my-1 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-amber-400 absolute top-0.5 right-0.5 shadow-[0_0_4px_rgba(251,191,36,0.8)]"></div>
+<div class="w-4 h-2.5 rounded-full bg-white border border-white shadow-sm absolute bottom-0 left-0"></div>
+</div>
+<span class="text-xs font-black text-[#1E2A3A]">۲۲°</span>
+</div>
+<!-- Hour 2: 14:00 (Regular Frosted Pill) -->
+<div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl shadow-sm" style="background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.25);">
+<span class="text-[10px] font-medium text-white/90 drop-shadow-sm">۱۴:۰۰</span>
+<!-- Mini Icon (Sunny) -->
+<div class="relative w-5 h-5 my-1 flex items-center justify-center">
+<div class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 shadow-[0_0_6px_rgba(245,158,11,0.6)]"></div>
+</div>
+<span class="text-xs font-bold text-white drop-shadow-sm">۲۴°</span>
+</div>
+<!-- Hour 3: 16:00 (Regular Frosted Pill) -->
+<div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl shadow-sm" style="background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.25);">
+<span class="text-[10px] font-medium text-white/90 drop-shadow-sm">۱۶:۰۰</span>
+<!-- Mini Icon (Partly Cloudy) -->
+<div class="relative w-5 h-5 my-1 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-amber-400 absolute top-0.5 right-0.5"></div>
+<div class="w-4 h-2.5 rounded-full bg-white border border-white/60 shadow-sm absolute bottom-0 left-0"></div>
+</div>
+<span class="text-xs font-bold text-white drop-shadow-sm">۲۳°</span>
+</div>
+<!-- Hour 4: 18:00 (Sunset / Cloud Frosted Pill) -->
+<div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl shadow-sm" style="background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.25);">
+<span class="text-[10px] font-medium text-white/90 drop-shadow-sm">۱۸:۰۰</span>
+<!-- Mini Icon (Sunset tint / cloud) -->
+<div class="relative w-5 h-5 my-1 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-orange-400 absolute top-0.5 right-0.5"></div>
+<div class="w-4 h-2.5 rounded-full bg-white/80 border border-white/40 shadow-sm absolute bottom-0 left-0"></div>
+</div>
+<span class="text-xs font-bold text-white drop-shadow-sm">۲۰°</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= END WIDGET ================= -->
+<!-- Widget Grid Size Indicator Badge -->
+<div class="mt-4 flex items-center gap-1.5 text-xs text-white/95 font-medium bg-black/25 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 shadow-md">
+<svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+</svg>
+<span>سلول شبکه ۴×۴ • ۲۵۰×۲۵۰ dp</span>
+</div>
+<!-- Android Home Bar / Navigation Pill Indicator -->
+<div class="w-32 h-1 bg-white/60 rounded-full mt-6 mb-1 shadow-sm"></div>
+</div>
+<!-- Technical Specification Card (Design System Alignment) -->
+<div class="w-full mt-6 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm"><div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<h2 class="text-sm font-bold text-slate-900">مشخصات فنی ویجت (Design System)</h2>
+</div>
+<span class="spec-badge text-[11px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded border border-blue-200 font-semibold">
+          ID: WGT_4X4_GLASS
+        </span>
+</div>
+<div class="grid grid-cols-3 gap-3 text-center text-xs">
+<div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-slate-400 text-[11px] mb-1">متریال سطح</div>
+<div class="font-bold text-slate-800">شیشه مات<br/><span class="text-slate-500 font-normal">(Frosted Glass)</span></div>
+</div>
+<div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-slate-400 text-[11px] mb-1">افکت بلور</div>
+<div class="font-bold text-slate-800">Blur 28px<br/><span class="text-slate-500 font-normal">(Material 3)</span></div>
+</div>
+<div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-slate-400 text-[11px] mb-1">نسبت ابعاد</div>
+<div class="font-bold text-slate-800">dp 250×250<br/><span class="text-slate-500 font-normal">(۴×۴)</span></div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
+<span>نفوذپذیری نور: <strong>کامپوزیت روی والپیپر یکسان نسخه ۲×۲ و ۴×۲ شفاف</strong></span>
+<span>انحنای گوشه: <strong>32px</strong></span>
+</div></div>
+</main>
+</body>
+</html>
